@@ -551,6 +551,70 @@ section {
     font-size: 1rem;
 }
 
+/* Certifications Section */
+.certifications {
+    background-color: #f0fff4;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.certification-item {
+    display: flex;
+    gap: 1.5rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.certification-item:hover {
+    transform: translateY(-5px);
+}
+
+.certification-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #2f855a, #38a169);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.certification-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.certification-content h4 {
+    color: #2f855a;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.certification-date {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.certification-content p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
 /* Education Section */
 .education-grid {
     display: grid;
@@ -771,6 +835,15 @@ section {
 
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certification-item {
+        flex-direction: column;
+        text-align: center;
     }
 
     .education-grid {
