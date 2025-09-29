@@ -234,7 +234,7 @@ const createThemeToggle = () => {
     themeToggle.className = 'theme-toggle';
     themeToggle.style.cssText = `
         position: fixed;
-        top: 20px;
+        top: 14px;
         right: 20px;
         z-index: 1001;
         background: #4f46e5;
