@@ -28,16 +28,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Navbar background change on scroll
-window.addEventListener('scroll', () => {
+const updateNavbarAppearance = () => {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.classList.add('navbar-scrolled');
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
+        navbar.classList.remove('navbar-scrolled');
     }
-});
+};
+
+window.addEventListener('scroll', updateNavbarAppearance);
+updateNavbarAppearance();
 
 // Active navigation link highlighting
 window.addEventListener('scroll', () => {
@@ -332,16 +335,8 @@ const debounce = (func, wait) => {
 
 // Apply debouncing to scroll events
 const debouncedScrollHandler = debounce(() => {
-    // Navbar background change
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-    
+    updateNavbarAppearance();
+
     // Parallax effect
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
