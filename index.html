@@ -9,6 +9,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <aside class="journey-progress" aria-hidden="true">
+        <div class="journey-title">Journey Progress</div>
+        <ul class="journey-steps">
+            <li class="journey-step" data-section="home">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Home Base</p>
+                    <p class="step-status">Meet Janrafael</p>
+                </div>
+            </li>
+            <li class="journey-step" data-section="about">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Origin Story</p>
+                    <p class="step-status">Background unlocked</p>
+                </div>
+            </li>
+            <li class="journey-step" data-section="experience">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Quest Log</p>
+                    <p class="step-status">Experience timeline</p>
+                </div>
+            </li>
+            <li class="journey-step" data-section="skills">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Skill Tree</p>
+                    <p class="step-status">Core abilities</p>
+                </div>
+            </li>
+            <li class="journey-step" data-section="projects">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Project Showcase</p>
+                    <p class="step-status">Featured builds</p>
+                </div>
+            </li>
+            <li class="journey-step" data-section="certifications">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Achievements</p>
+                    <p class="step-status">Professional badges</p>
+                </div>
+            </li>
+            <li class="journey-step" data-section="education">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Training Grounds</p>
+                    <p class="step-status">Academic path</p>
+                </div>
+            </li>
+            <li class="journey-step" data-section="contact">
+                <span class="step-dot"></span>
+                <div class="step-copy">
+                    <p class="step-name">Final Quest</p>
+                    <p class="step-status">Start a mission</p>
+                </div>
+            </li>
+        </ul>
+    </aside>
+
+    <div class="progress-toast" role="status" aria-live="polite">Secret badge unlocked!</div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -367,7 +430,8 @@
         <div class="container">
             <h2 class="section-title">Certifications</h2>
             <div class="certifications-grid">
-                <div class="certification-item">
+                <div class="certification-item achievement-card" data-badge="Cyber Sentinel">
+                    <span class="badge-label">Locked</span>
                     <div class="certification-icon">
                         <i class="fab fa-linux"></i>
                     </div>
@@ -381,7 +445,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="certification-item">
+                <div class="certification-item achievement-card" data-badge="IoT Explorer">
+                    <span class="badge-label">Locked</span>
                     <div class="certification-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
@@ -395,7 +460,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="certification-item">
+                <div class="certification-item achievement-card" data-badge="Cloud Pioneer">
+                    <span class="badge-label">Locked</span>
                     <div class="certification-icon">
                         <i class="fab fa-google"></i>
                     </div>
@@ -462,6 +528,15 @@
                         I'm always interested in new opportunities and exciting projects. 
                         Whether you have a question or just want to say hi, feel free to reach out!
                     </p>
+                    <div class="contact-quest">
+                        <p class="quest-title">Final Quest Objectives</p>
+                        <ul class="quest-list">
+                            <li data-quest="name"><i class="fas fa-circle"></i> Introduce yourself</li>
+                            <li data-quest="subject"><i class="fas fa-circle"></i> Share the mission</li>
+                            <li data-quest="message"><i class="fas fa-circle"></i> Send the invitation</li>
+                        </ul>
+                        <div class="quest-reward"><i class="fas fa-gift"></i> Reward: Collaboration unlocked</div>
+                    </div>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
