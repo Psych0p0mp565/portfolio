@@ -6,7 +6,7 @@
     <title>Janrafael F. Morga - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Pro:wght@300;400;500;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -32,10 +32,13 @@
                     <a href="#projects" class="nav-link">Projects</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#education" class="nav-link">Education</a>
+                </li>
+                <li class="nav-item">
                     <a href="#certifications" class="nav-link">Certifications</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#achievements" class="nav-link">Achievements</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -73,14 +76,14 @@
             </div>
             <div class="hero-image">
                 <div class="profile-image">
-                    <img src="./profile.jpeg" alt="Janrafael F. Morga">
+                    <img src="profile.jpeg" alt="Janrafael F. Morga">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about slope-section">
+    <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -115,7 +118,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience slope-section">
+    <section id="experience" class="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
             <div class="timeline">
@@ -126,13 +129,15 @@
                         <h4>Mindanao State University General Santos</h4>
                         <span class="timeline-date">2022 - Present</span>
                         <p>
-                            Currently pursuing Bachelor of Science in Database Management, gaining hands-on experience 
-                            with various database systems, data analysis, and database optimization techniques.
+                            Currently pursuing Bachelor of Science in Database Management as a 4th year student, 
+                            gaining hands-on experience with various database systems, data analysis, and database 
+                            optimization techniques through academic coursework and projects.
                         </p>
                         <ul>
                             <li>Working with MySQL, PostgreSQL, and MongoDB databases</li>
                             <li>Learning database design and implementation</li>
                             <li>Developing skills in data analysis and reporting</li>
+                            <li>Completing academic database projects and assignments</li>
                         </ul>
                     </div>
                 </div>
@@ -141,15 +146,16 @@
                     <div class="timeline-content">
                         <h3>Student Database Projects</h3>
                         <h4>Academic Projects</h4>
-                        <span class="timeline-date">2024 - 2025</span>
+                        <span class="timeline-date">2022 - Present</span>
                         <p>
-                            Worked on various database projects as part of academic coursework, focusing on practical 
+                            Working on various database projects as part of academic coursework, focusing on practical 
                             application of database management concepts and real-world problem solving.
                         </p>
                         <ul>
                             <li>Developed database schemas using MySQL and PostgreSQL</li>
                             <li>Implemented data normalization and optimization techniques</li>
                             <li>Created database applications for academic projects</li>
+                            <li>Participated in database design competitions and challenges</li>
                         </ul>
                     </div>
                 </div>
@@ -158,15 +164,16 @@
                     <div class="timeline-content">
                         <h3>Database Fundamentals</h3>
                         <h4>Academic Learning</h4>
-                        <span class="timeline-date">2020 - 2021</span>
+                        <span class="timeline-date">2022 - 2023</span>
                         <p>
                             Began my journey in database management through academic coursework, learning fundamental 
-                            database concepts, SQL programming, and database design principles.
+                            database concepts, SQL programming, and database design principles during my first year.
                         </p>
                         <ul>
                             <li>Learned SQL programming and database querying</li>
                             <li>Studied database normalization and design principles</li>
                             <li>Completed foundational database management coursework</li>
+                            <li>Gained understanding of relational database systems</li>
                         </ul>
                     </div>
                 </div>
@@ -175,7 +182,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills slope-section">
+    <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title">Skills</h2>
             <div class="skills-grid">
@@ -271,15 +278,13 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects slope-section">
+    <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Swipe or drag across the cards to discover more of my recent work.</p>
-            <div class="scroll-hint"><i class="fas fa-arrows-alt-h"></i> Explore the carousel</div>
             <div class="projects-grid">
                 <div class="project-item">
                     <div class="project-image">
-                        <img src="images/project-habal.svg" alt="Illustration of the Habal-Habal Ride Sharing App">
+                        <img src="images/project-habal.svg" alt="Habal-Habal Ride Sharing App">
                     </div>
                     <div class="project-content">
                         <h3>Habal-Habal Ride Sharing Platform</h3>
@@ -306,7 +311,7 @@
                 </div>
                 <div class="project-item">
                     <div class="project-image">
-                        <img src="images/project-mealybug.svg" alt="Illustration of the Mealybug Detection Algorithm project">
+                        <img src="images/project-mealybug.svg" alt="Mealybug Detection Algorithm">
                     </div>
                     <div class="project-content">
                         <h3>Mealybug Detection Algorithm</h3>
@@ -333,7 +338,7 @@
                 </div>
                 <div class="project-item">
                     <div class="project-image">
-                        <img src="images/project-database.svg" alt="Illustration of the Enterprise Database Management System project">
+                        <img src="images/project-database.svg" alt="Database Management System">
                     </div>
                     <div class="project-content">
                         <h3>Enterprise Database Management System</h3>
@@ -362,8 +367,46 @@
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>Bachelor of Science in Database Management</h3>
+                        <h4>Mindanao State University General Santos</h4>
+                        <span class="education-date">2022 - Present (4th Year)</span>
+                        <p>
+                            Currently pursuing a strong foundation in database management, data analysis, 
+                            and information systems. Working on various projects including database design, 
+                            data modeling, and database optimization projects.
+                        </p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>Database Administration Certification</h3>
+                        <h4>Oracle University</h4>
+                        <span class="education-date">2022</span>
+                        <p>
+                            Completed comprehensive database administration course covering Oracle database 
+                            management, performance tuning, backup and recovery, and database security best practices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Certifications Section -->
-    <section id="certifications" class="certifications slope-section">
+    <section id="certifications" class="certifications">
         <div class="container">
             <h2 class="section-title">Certifications</h2>
             <div class="certifications-grid">
@@ -413,37 +456,36 @@
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education slope-section">
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-graduation-cap"></i>
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
                     </div>
-                    <div class="education-content">
-                        <h3>Bachelor of Science in Database Management</h3>
-                        <h4>Mindanao State University General Santos</h4>
-                        <span class="education-date">2020 - Present (4th Year)</span>
+                    <div class="achievement-content">
+                        <h3>1st Runner Up</h3>
+                        <h4>AI Bayanihan Challenge</h4>
+                        <span class="achievement-date">2025</span>
                         <p>
-                            Currently pursuing a strong foundation in database management, data analysis, 
-                            and information systems. Working on various projects including database design, 
-                            data modeling, and database optimization projects.
+                            Achieved 1st runner up position in the AI Bayanihan Challenge, showcasing expertise 
+                            in artificial intelligence and machine learning solutions for real-world problems.
                         </p>
                     </div>
                 </div>
-                <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-certificate"></i>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
                     </div>
-                    <div class="education-content">
-                        <h3>Database Administration Certification</h3>
-                        <h4>Oracle University</h4>
-                        <span class="education-date">2022</span>
+                    <div class="achievement-content">
+                        <h3>Top 10 Participant</h3>
+                        <h4>Philippine Startup Challenge (PSC)</h4>
+                        <span class="achievement-date">2025</span>
                         <p>
-                            Completed comprehensive database administration course covering Oracle database 
-                            management, performance tuning, backup and recovery, and database security best practices.
+                            Recognized as one of the top 10 participants in the Philippine Startup Challenge, 
+                            demonstrating innovation and entrepreneurial skills in developing startup solutions.
                         </p>
                     </div>
                 </div>
@@ -452,7 +494,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact slope-section">
+    <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
