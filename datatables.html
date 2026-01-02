@@ -531,12 +531,12 @@
                 <ul class="nav nav-tabs" id="tableTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="table1-tab" data-bs-toggle="tab" data-bs-target="#table1" type="button" role="tab">
-                            <i class="fas fa-table me-2"></i>Table View 1
+                            <i class="fas fa-users me-2"></i>All Employees
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="table2-tab" data-bs-toggle="tab" data-bs-target="#table2" type="button" role="tab">
-                            <i class="fas fa-clone me-2"></i>Table View 2
+                            <i class="fas fa-user-plus me-2"></i>Recently Hired
                         </button>
                     </li>
                 </ul>
@@ -806,11 +806,23 @@
         }
         
         // Initialize DataTable
-        function initializeTable(tableId, tableNum) {
-            const table = $(`#${tableId}`).DataTable({
+        function initializeTable(tableId, tableNum, options = {}) {
+            const defaultOptions = {
                 ajax: {
                     url: AJAX_URL,
-                    dataSrc: 'data'
+                    dataSrc: function(json) {
+                        let data = json.data;
+                        
+                        // For Tab 2: Filter recently hired (2012 and later)
+                        if (options.recentlyHired) {
+                            data = data.filter(emp => {
+                                const year = parseInt(emp.startDate.split('-')[0]);
+                                return year >= 2012;
+                            });
+                        }
+                        
+                        return data;
+                    }
                 },
                 columns: [
                     { data: 'name' },
@@ -825,13 +837,15 @@
                     style: 'multi',
                     selector: 'td'
                 },
-                order: [[0, 'asc']],
+                order: options.recentlyHired ? [[4, 'desc']] : [[0, 'asc']], // Sort by Start Date for recently hired
                 pageLength: 10,
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 dom: 'rt<"bottom-controls d-flex justify-content-between align-items-end mt-3"<"bottom-left"li><"bottom-right"p>>',
                 language: {
                     lengthMenu: "_MENU_ entries per page",
-                    info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                    info: options.recentlyHired 
+                        ? "Showing _START_ to _END_ of _TOTAL_ recently hired" 
+                        : "Showing _START_ to _END_ of _TOTAL_ entries",
                     infoEmpty: "No entries available",
                     infoFiltered: "(filtered from _MAX_ total)",
                     paginate: {
@@ -844,7 +858,9 @@
                 initComplete: function() {
                     $(`#loading${tableNum}`).fadeOut();
                 }
-            });
+            };
+            
+            const table = $(`#${tableId}`).DataTable(defaultOptions);
             
             // Update selected count on select/deselect
             table.on('select deselect', function() {
@@ -899,14 +915,14 @@
         let table1, table2;
         
         $(document).ready(function() {
-            // Initialize first table
-            table1 = initializeTable('dataTable1', 1);
+            // Initialize first table - All Employees
+            table1 = initializeTable('dataTable1', 1, { recentlyHired: false });
             
-            // Initialize second table when tab is shown
+            // Initialize second table when tab is shown - Recently Hired (2012+)
             let table2Initialized = false;
             $('#table2-tab').on('shown.bs.tab', function() {
                 if (!table2Initialized) {
-                    table2 = initializeTable('dataTable2', 2);
+                    table2 = initializeTable('dataTable2', 2, { recentlyHired: true });
                     table2Initialized = true;
                 }
             });
