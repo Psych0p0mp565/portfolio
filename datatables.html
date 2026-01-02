@@ -272,13 +272,28 @@
         .table-container {
             position: relative;
             padding-top: 20px;
-            padding-bottom: 100px;
-            overflow: visible;
+            padding-bottom: 20px;
         }
         
         /* DataTables Customization */
         .dataTables_wrapper {
             position: relative;
+        }
+        
+        /* Bottom Controls Layout */
+        .bottom-controls {
+            padding-top: 15px;
+        }
+        
+        .bottom-left {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .bottom-right {
+            display: flex;
+            align-items: center;
         }
         
         table.dataTable {
@@ -328,12 +343,8 @@
         
         /* Pagination - Bottom Right */
         .dataTables_paginate {
-            position: absolute !important;
-            bottom: 0 !important;
-            right: 0 !important;
             padding: 0 !important;
             margin: 0 !important;
-            z-index: 10;
         }
         
         .dataTables_paginate .pagination {
@@ -364,9 +375,7 @@
         
         /* Length - Bottom Left */
         .dataTables_length {
-            position: absolute !important;
-            bottom: 45px !important;
-            left: 0 !important;
+            margin: 0;
         }
         
         .dataTables_length label {
@@ -387,9 +396,6 @@
         
         /* Info - Bottom Left (below length) */
         .dataTables_info {
-            position: absolute !important;
-            bottom: 15px !important;
-            left: 0 !important;
             font-size: 0.9rem;
             color: var(--gray);
             margin: 0;
@@ -821,7 +827,7 @@
                 order: [[0, 'asc']],
                 pageLength: 10,
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                dom: '<"row"<"col-12 d-flex justify-content-center"p>>rt<"row mt-3"<"col-md-6"l><"col-md-6"i>>',
+                dom: 'rt<"bottom-controls d-flex justify-content-between align-items-end mt-3"<"bottom-left"li><"bottom-right"p>>',
                 language: {
                     lengthMenu: "_MENU_ entries per page",
                     info: "Showing _START_ to _END_ of _TOTAL_ entries",
