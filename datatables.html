@@ -11,135 +11,519 @@
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            background: linear-gradient(135deg, #ecfdf5 0%, #e0f2fe 100%);
-            min-height: 100vh;
-            padding: 20px 0;
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
         }
         
-        .container {
-            max-width: 1400px;
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 30px 0;
+        }
+        
+        .main-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .page-header h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
         }
         
         .card {
             border: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            background: white;
         }
         
         .card-header {
-            background: linear-gradient(135deg, #059669, #2563eb);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
+            padding: 20px 25px;
             border: none;
         }
         
+        .card-header h2 {
+            font-weight: 600;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        /* Tabs Styling */
         .nav-tabs {
-            border-bottom: 2px solid #059669;
+            border: none;
+            gap: 10px;
+            margin-bottom: 25px;
         }
         
         .nav-tabs .nav-link {
-            color: #059669;
             border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 500;
+            color: var(--gray);
+            background: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            background: #e2e8f0;
+            color: var(--dark);
         }
         
         .nav-tabs .nav-link.active {
-            background: linear-gradient(135deg, #059669, #2563eb);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            border: none;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         }
         
-        .table-container {
-            position: relative;
-        }
-        
-        /* Custom pagination position - top middle */
-        .dataTables_paginate {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto;
-        }
-        
-        /* Custom entries per page - bottom left */
-        .dataTables_length {
-            position: absolute;
-            bottom: -60px;
-            left: 0;
-            margin-top: 20px;
-        }
-        
-        /* Custom info - below entries per page */
-        .dataTables_info {
-            position: absolute;
-            bottom: -60px;
-            left: 200px;
-            margin-top: 20px;
-        }
-        
-        /* Column search inputs */
-        .column-search {
-            margin-bottom: 10px;
-        }
-        
-        .column-search input {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        /* Column visibility toggle */
-        .column-toggle {
-            margin-bottom: 15px;
-        }
-        
-        .column-toggle label {
-            margin-right: 15px;
-            cursor: pointer;
-        }
-        
-        /* Delete selected button */
-        .delete-selected {
-            margin-bottom: 15px;
-        }
-        
-        /* Table wrapper spacing */
-        .dataTables_wrapper {
-            padding-bottom: 80px;
-        }
-        
-        .table-top-controls {
+        /* Controls Panel */
+        .controls-panel {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 20px;
             margin-bottom: 20px;
         }
         
-        .table-wrapper {
-            min-height: 400px;
+        .controls-section {
+            margin-bottom: 15px;
+        }
+        
+        .controls-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .controls-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .controls-label i {
+            color: var(--primary);
+        }
+        
+        /* Column Toggle Buttons */
+        .column-toggles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .column-toggle-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .column-toggle-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .column-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        
+        /* Search Inputs */
+        .search-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        
+        .search-input-group {
+            position: relative;
+        }
+        
+        .search-input-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            display: block;
+        }
+        
+        .search-input-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .search-input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-action {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        
+        .btn-action:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-select-all {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-select-all:hover {
+            background: var(--primary-dark);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-delete {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .btn-delete:hover {
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+        
+        .btn-clear {
+            background: var(--gray);
+            color: white;
+        }
+        
+        .btn-clear:hover {
+            background: #475569;
+            color: white;
+        }
+        
+        /* Table Container */
+        .table-container {
+            position: relative;
+            padding-top: 60px;
+            padding-bottom: 80px;
+        }
+        
+        /* DataTables Customization */
+        .dataTables_wrapper {
+            position: relative;
+        }
+        
+        table.dataTable {
+            border-collapse: collapse !important;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        table.dataTable thead th {
+            background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+            color: white;
+            font-weight: 600;
+            padding: 15px 12px;
+            border: none !important;
+            font-size: 0.9rem;
+        }
+        
+        table.dataTable tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        table.dataTable tbody tr:hover {
+            background: #f1f5f9 !important;
+        }
+        
+        table.dataTable tbody tr.selected {
+            background: rgba(99, 102, 241, 0.15) !important;
+        }
+        
+        table.dataTable tbody tr.selected:hover {
+            background: rgba(99, 102, 241, 0.25) !important;
+        }
+        
+        table.dataTable tbody td {
+            padding: 14px 12px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        /* Row checkbox */
+        .row-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+        
+        /* Pagination - Top Middle */
+        .dataTables_paginate {
+            position: absolute !important;
+            top: 0 !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .dataTables_paginate .pagination {
+            margin: 0;
+            gap: 5px;
+        }
+        
+        .dataTables_paginate .page-link {
+            border: none;
+            border-radius: 8px;
+            padding: 8px 14px;
+            color: var(--dark);
+            font-weight: 500;
+            background: var(--light);
+        }
+        
+        .dataTables_paginate .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .dataTables_paginate .page-link:hover {
+            background: #e2e8f0;
+            color: var(--dark);
+        }
+        
+        /* Length - Bottom Left */
+        .dataTables_length {
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+        }
+        
+        .dataTables_length label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .dataTables_length select {
+            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        /* Info - Bottom Left (below length) */
+        .dataTables_info {
+            position: absolute !important;
+            bottom: -30px !important;
+            left: 0 !important;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Hide default search */
+        .dataTables_filter {
+            display: none !important;
+        }
+        
+        /* Loading Spinner */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            border-radius: 12px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e2e8f0;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        
+        .custom-toast {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            animation: slideIn 0.3s ease;
+            max-width: 350px;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .toast-success { border-left: 4px solid var(--success); }
+        .toast-error { border-left: 4px solid var(--danger); }
+        .toast-warning { border-left: 4px solid var(--warning); }
+        
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+        
+        .toast-success .toast-icon { color: var(--success); }
+        .toast-error .toast-icon { color: var(--danger); }
+        .toast-warning .toast-icon { color: var(--warning); }
+        
+        .toast-message {
+            flex: 1;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        /* Selected count badge */
+        .selected-count {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-inputs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .column-toggles {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <div class="main-container">
+        <div class="page-header">
+            <h1><i class="fas fa-table me-3"></i>DataTables Demo</h1>
+            <p>Interactive data table with AJAX, Bootstrap 5, and advanced features</p>
+        </div>
+        
         <div class="card">
-            <div class="card-header">
-                <h2 class="mb-0"><i class="fas fa-table"></i> DataTables Demo</h2>
-            </div>
             <div class="card-body">
                 <!-- Nav Tabs -->
                 <ul class="nav nav-tabs" id="tableTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="table1-tab" data-bs-toggle="tab" data-bs-target="#table1" type="button" role="tab">
-                            Table 1
+                            <i class="fas fa-table me-2"></i>Table View 1
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="table2-tab" data-bs-toggle="tab" data-bs-target="#table2" type="button" role="tab">
-                            Table 2
+                            <i class="fas fa-clone me-2"></i>Table View 2
                         </button>
                     </li>
                 </ul>
@@ -148,147 +532,215 @@
                 <div class="tab-content" id="tableTabsContent">
                     <!-- Table 1 -->
                     <div class="tab-pane fade show active" id="table1" role="tabpanel">
-                        <div class="table-container mt-4">
-                            <div class="table-top-controls">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="column-toggle">
-                                            <strong>Show/Hide Columns:</strong><br>
-                                            <label><input type="checkbox" class="toggle-col" data-column="0" checked> ID</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="1" checked> Name</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="2" checked> Email</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="3" checked> Position</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="4" checked> Office</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="5" checked> Age</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="6" checked> Nationality</label>
+                        <!-- Controls Panel -->
+                        <div class="controls-panel">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <!-- Column Visibility -->
+                                    <div class="controls-section">
+                                        <div class="controls-label">
+                                            <i class="fas fa-eye"></i> Show/Hide Columns
+                                        </div>
+                                        <div class="column-toggles" id="columnToggles1">
+                                            <button class="column-toggle-btn active" data-column="0">Name</button>
+                                            <button class="column-toggle-btn active" data-column="1">Position</button>
+                                            <button class="column-toggle-btn active" data-column="2">Office</button>
+                                            <button class="column-toggle-btn active" data-column="3">Age</button>
+                                            <button class="column-toggle-btn active" data-column="4">Start Date</button>
+                                            <button class="column-toggle-btn active" data-column="5">Salary</button>
+                                            <button class="column-toggle-btn active" data-column="6">Nationality</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 text-end">
-                                        <button class="btn btn-danger delete-selected" id="deleteSelected1">
-                                            <i class="fas fa-trash"></i> Delete Selected
-                                        </button>
+                                    
+                                    <!-- Column Search -->
+                                    <div class="controls-section">
+                                        <div class="controls-label">
+                                            <i class="fas fa-search"></i> Column Search
+                                        </div>
+                                        <div class="search-inputs" id="searchInputs1">
+                                            <div class="search-input-group">
+                                                <label>Name</label>
+                                                <input type="text" data-column="0" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Position</label>
+                                                <input type="text" data-column="1" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Office</label>
+                                                <input type="text" data-column="2" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Age</label>
+                                                <input type="text" data-column="3" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Start Date</label>
+                                                <input type="text" data-column="4" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Salary</label>
+                                                <input type="text" data-column="5" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Nationality</label>
+                                                <input type="text" data-column="6" placeholder="Search...">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <strong>Column Search:</strong>
-                                        <div class="row">
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search ID" id="search-id-1">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Name" id="search-name-1">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Email" id="search-email-1">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Position" id="search-position-1">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Office" id="search-office-1">
-                                            </div>
-                                            <div class="col-md-1 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Age" id="search-age-1">
-                                            </div>
-                                            <div class="col-md-1 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Nationality" id="search-nationality-1">
-                                            </div>
+                                
+                                <div class="col-lg-4">
+                                    <!-- Actions -->
+                                    <div class="controls-section">
+                                        <div class="controls-label">
+                                            <i class="fas fa-bolt"></i> Actions
+                                            <span class="selected-count" id="selectedCount1">
+                                                <i class="fas fa-check-circle"></i> <span>0</span> selected
+                                            </span>
+                                        </div>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-action btn-select-all" id="selectAll1">
+                                                <i class="fas fa-check-double"></i> Select All
+                                            </button>
+                                            <button class="btn btn-action btn-clear" id="clearSelection1">
+                                                <i class="fas fa-times"></i> Clear
+                                            </button>
+                                            <button class="btn btn-action btn-delete" id="deleteSelected1">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-wrapper">
-                                <table id="dataTable1" class="table table-striped table-hover" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Nationality</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Data will be loaded via AJAX -->
-                                    </tbody>
-                                </table>
+                        </div>
+                        
+                        <!-- Table -->
+                        <div class="table-container" id="tableContainer1">
+                            <div class="loading-overlay" id="loading1">
+                                <div class="spinner"></div>
                             </div>
+                            <table id="dataTable1" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start Date</th>
+                                        <th>Salary</th>
+                                        <th>Nationality</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
                     </div>
                     
                     <!-- Table 2 -->
                     <div class="tab-pane fade" id="table2" role="tabpanel">
-                        <div class="table-container mt-4">
-                            <div class="table-top-controls">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="column-toggle">
-                                            <strong>Show/Hide Columns:</strong><br>
-                                            <label><input type="checkbox" class="toggle-col" data-column="0" checked> ID</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="1" checked> Name</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="2" checked> Email</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="3" checked> Position</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="4" checked> Office</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="5" checked> Age</label>
-                                            <label><input type="checkbox" class="toggle-col" data-column="6" checked> Nationality</label>
+                        <!-- Controls Panel -->
+                        <div class="controls-panel">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <!-- Column Visibility -->
+                                    <div class="controls-section">
+                                        <div class="controls-label">
+                                            <i class="fas fa-eye"></i> Show/Hide Columns
+                                        </div>
+                                        <div class="column-toggles" id="columnToggles2">
+                                            <button class="column-toggle-btn active" data-column="0">Name</button>
+                                            <button class="column-toggle-btn active" data-column="1">Position</button>
+                                            <button class="column-toggle-btn active" data-column="2">Office</button>
+                                            <button class="column-toggle-btn active" data-column="3">Age</button>
+                                            <button class="column-toggle-btn active" data-column="4">Start Date</button>
+                                            <button class="column-toggle-btn active" data-column="5">Salary</button>
+                                            <button class="column-toggle-btn active" data-column="6">Nationality</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 text-end">
-                                        <button class="btn btn-danger delete-selected" id="deleteSelected2">
-                                            <i class="fas fa-trash"></i> Delete Selected
-                                        </button>
+                                    
+                                    <!-- Column Search -->
+                                    <div class="controls-section">
+                                        <div class="controls-label">
+                                            <i class="fas fa-search"></i> Column Search
+                                        </div>
+                                        <div class="search-inputs" id="searchInputs2">
+                                            <div class="search-input-group">
+                                                <label>Name</label>
+                                                <input type="text" data-column="0" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Position</label>
+                                                <input type="text" data-column="1" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Office</label>
+                                                <input type="text" data-column="2" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Age</label>
+                                                <input type="text" data-column="3" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Start Date</label>
+                                                <input type="text" data-column="4" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Salary</label>
+                                                <input type="text" data-column="5" placeholder="Search...">
+                                            </div>
+                                            <div class="search-input-group">
+                                                <label>Nationality</label>
+                                                <input type="text" data-column="6" placeholder="Search...">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <strong>Column Search:</strong>
-                                        <div class="row">
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search ID" id="search-id-2">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Name" id="search-name-2">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Email" id="search-email-2">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Position" id="search-position-2">
-                                            </div>
-                                            <div class="col-md-2 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Office" id="search-office-2">
-                                            </div>
-                                            <div class="col-md-1 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Age" id="search-age-2">
-                                            </div>
-                                            <div class="col-md-1 column-search">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Search Nationality" id="search-nationality-2">
-                                            </div>
+                                
+                                <div class="col-lg-4">
+                                    <!-- Actions -->
+                                    <div class="controls-section">
+                                        <div class="controls-label">
+                                            <i class="fas fa-bolt"></i> Actions
+                                            <span class="selected-count" id="selectedCount2">
+                                                <i class="fas fa-check-circle"></i> <span>0</span> selected
+                                            </span>
+                                        </div>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-action btn-select-all" id="selectAll2">
+                                                <i class="fas fa-check-double"></i> Select All
+                                            </button>
+                                            <button class="btn btn-action btn-clear" id="clearSelection2">
+                                                <i class="fas fa-times"></i> Clear
+                                            </button>
+                                            <button class="btn btn-action btn-delete" id="deleteSelected2">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-wrapper">
-                                <table id="dataTable2" class="table table-striped table-hover" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Nationality</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Data will be loaded via AJAX -->
-                                    </tbody>
-                                </table>
+                        </div>
+                        
+                        <!-- Table -->
+                        <div class="table-container" id="tableContainer2">
+                            <div class="loading-overlay" id="loading2">
+                                <div class="spinner"></div>
                             </div>
+                            <table id="dataTable2" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start Date</th>
+                                        <th>Salary</th>
+                                        <th>Nationality</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -308,163 +760,178 @@
     <script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
     
     <script>
-        // AJAX DataSource URL (using a public API that returns JSON with 7+ columns)
-        // Using a free API that provides user data
-        const ajaxUrl = 'https://jsonplaceholder.typicode.com/users';
+        // Sample data with 7 columns including nationality (57 records)
+        const sampleData = [
+            { name: "Tiger Nixon", position: "System Architect", office: "Edinburgh", age: 61, startDate: "2011-04-25", salary: "$320,800", nationality: "British" },
+            { name: "Garrett Winters", position: "Accountant", office: "Tokyo", age: 63, startDate: "2011-07-25", salary: "$170,750", nationality: "Japanese" },
+            { name: "Ashton Cox", position: "Junior Technical Author", office: "San Francisco", age: 66, startDate: "2009-01-12", salary: "$86,000", nationality: "American" },
+            { name: "Cedric Kelly", position: "Senior Javascript Developer", office: "Edinburgh", age: 22, startDate: "2012-03-29", salary: "$433,060", nationality: "British" },
+            { name: "Airi Satou", position: "Accountant", office: "Tokyo", age: 33, startDate: "2008-11-28", salary: "$162,700", nationality: "Japanese" },
+            { name: "Brielle Williamson", position: "Integration Specialist", office: "New York", age: 61, startDate: "2012-12-02", salary: "$372,000", nationality: "American" },
+            { name: "Herrod Chandler", position: "Sales Assistant", office: "San Francisco", age: 59, startDate: "2012-08-06", salary: "$137,500", nationality: "American" },
+            { name: "Rhona Davidson", position: "Integration Specialist", office: "Tokyo", age: 55, startDate: "2010-10-14", salary: "$327,900", nationality: "Japanese" },
+            { name: "Colleen Hurst", position: "Javascript Developer", office: "San Francisco", age: 39, startDate: "2009-09-15", salary: "$205,500", nationality: "American" },
+            { name: "Sonya Frost", position: "Software Engineer", office: "Edinburgh", age: 23, startDate: "2008-12-13", salary: "$103,600", nationality: "British" },
+            { name: "Jena Gaines", position: "Office Manager", office: "London", age: 30, startDate: "2008-12-19", salary: "$90,560", nationality: "British" },
+            { name: "Quinn Flynn", position: "Support Lead", office: "Edinburgh", age: 22, startDate: "2013-03-03", salary: "$342,000", nationality: "Irish" },
+            { name: "Charde Marshall", position: "Regional Director", office: "San Francisco", age: 36, startDate: "2008-10-16", salary: "$470,600", nationality: "American" },
+            { name: "Haley Kennedy", position: "Senior Marketing Designer", office: "London", age: 43, startDate: "2012-12-18", salary: "$313,500", nationality: "British" },
+            { name: "Tatyana Fitzpatrick", position: "Regional Director", office: "London", age: 19, startDate: "2010-03-17", salary: "$385,750", nationality: "British" },
+            { name: "Michael Silva", position: "Marketing Designer", office: "London", age: 66, startDate: "2012-11-27", salary: "$198,500", nationality: "Portuguese" },
+            { name: "Paul Byrd", position: "Chief Financial Officer", office: "New York", age: 64, startDate: "2010-06-09", salary: "$725,000", nationality: "American" },
+            { name: "Gloria Little", position: "Systems Administrator", office: "New York", age: 59, startDate: "2009-04-10", salary: "$237,500", nationality: "American" },
+            { name: "Bradley Greer", position: "Software Engineer", office: "London", age: 41, startDate: "2012-10-13", salary: "$132,000", nationality: "British" },
+            { name: "Dai Rios", position: "Personnel Lead", office: "Edinburgh", age: 35, startDate: "2012-09-26", salary: "$217,500", nationality: "Filipino" },
+            { name: "Jenette Caldwell", position: "Development Lead", office: "New York", age: 30, startDate: "2011-09-03", salary: "$345,000", nationality: "American" },
+            { name: "Yuri Berry", position: "Chief Marketing Officer", office: "New York", age: 40, startDate: "2009-06-25", salary: "$675,000", nationality: "Russian" },
+            { name: "Caesar Vance", position: "Pre-Sales Support", office: "New York", age: 21, startDate: "2011-12-12", salary: "$106,450", nationality: "American" },
+            { name: "Doris Wilder", position: "Sales Assistant", office: "Sydney", age: 23, startDate: "2010-09-20", salary: "$85,600", nationality: "Australian" },
+            { name: "Angelica Ramos", position: "Chief Executive Officer", office: "London", age: 47, startDate: "2009-10-09", salary: "$1,200,000", nationality: "Spanish" },
+            { name: "Gavin Joyce", position: "Developer", office: "Edinburgh", age: 42, startDate: "2010-12-22", salary: "$92,575", nationality: "Irish" },
+            { name: "Jennifer Chang", position: "Regional Director", office: "Singapore", age: 28, startDate: "2010-11-14", salary: "$357,650", nationality: "Singaporean" },
+            { name: "Brenden Wagner", position: "Software Engineer", office: "San Francisco", age: 28, startDate: "2011-06-07", salary: "$206,850", nationality: "German" },
+            { name: "Fiona Green", position: "Chief Operating Officer", office: "San Francisco", age: 48, startDate: "2010-03-11", salary: "$850,000", nationality: "American" },
+            { name: "Shou Itou", position: "Regional Marketing", office: "Tokyo", age: 20, startDate: "2011-08-14", salary: "$163,000", nationality: "Japanese" },
+            { name: "Michelle House", position: "Integration Specialist", office: "Sydney", age: 37, startDate: "2011-06-02", salary: "$95,400", nationality: "Australian" },
+            { name: "Suki Burks", position: "Developer", office: "London", age: 53, startDate: "2009-10-22", salary: "$114,500", nationality: "British" },
+            { name: "Prescott Bartlett", position: "Technical Author", office: "London", age: 27, startDate: "2011-05-07", salary: "$145,000", nationality: "British" },
+            { name: "Gavin Cortez", position: "Team Leader", office: "San Francisco", age: 22, startDate: "2008-10-26", salary: "$235,500", nationality: "Mexican" },
+            { name: "Martena Mccray", position: "Post-Sales Support", office: "Edinburgh", age: 46, startDate: "2011-03-09", salary: "$324,050", nationality: "Scottish" },
+            { name: "Unity Butler", position: "Marketing Designer", office: "San Francisco", age: 47, startDate: "2009-12-09", salary: "$85,675", nationality: "American" },
+            { name: "Howard Hatfield", position: "Office Manager", office: "San Francisco", age: 51, startDate: "2008-12-16", salary: "$164,500", nationality: "American" },
+            { name: "Hope Fuentes", position: "Secretary", office: "San Francisco", age: 41, startDate: "2010-02-12", salary: "$109,850", nationality: "Mexican" },
+            { name: "Vivian Harrell", position: "Financial Controller", office: "San Francisco", age: 62, startDate: "2009-02-14", salary: "$452,500", nationality: "American" },
+            { name: "Timothy Mooney", position: "Office Manager", office: "London", age: 37, startDate: "2008-12-11", salary: "$136,200", nationality: "Irish" },
+            { name: "Jackson Bradshaw", position: "Director", office: "New York", age: 65, startDate: "2008-09-26", salary: "$645,750", nationality: "American" },
+            { name: "Olivia Liang", position: "Support Engineer", office: "Singapore", age: 64, startDate: "2011-02-03", salary: "$234,500", nationality: "Chinese" },
+            { name: "Bruno Nash", position: "Software Engineer", office: "London", age: 38, startDate: "2011-05-03", salary: "$163,500", nationality: "Italian" },
+            { name: "Sakura Yamamoto", position: "Support Engineer", office: "Tokyo", age: 37, startDate: "2009-08-19", salary: "$139,575", nationality: "Japanese" },
+            { name: "Thor Walton", position: "Developer", office: "New York", age: 61, startDate: "2013-08-11", salary: "$98,540", nationality: "Norwegian" },
+            { name: "Finn Camacho", position: "Support Engineer", office: "San Francisco", age: 47, startDate: "2009-07-07", salary: "$87,500", nationality: "Filipino" },
+            { name: "Serge Baldwin", position: "Data Coordinator", office: "Singapore", age: 64, startDate: "2012-04-09", salary: "$138,575", nationality: "French" },
+            { name: "Zenaida Frank", position: "Software Engineer", office: "New York", age: 63, startDate: "2010-01-04", salary: "$125,250", nationality: "Polish" },
+            { name: "Zorita Serrano", position: "Software Engineer", office: "San Francisco", age: 56, startDate: "2012-06-01", salary: "$115,000", nationality: "Spanish" },
+            { name: "Jennifer Acosta", position: "Junior Javascript Developer", office: "Edinburgh", age: 43, startDate: "2013-02-01", salary: "$75,650", nationality: "Colombian" },
+            { name: "Cara Stevens", position: "Sales Assistant", office: "New York", age: 46, startDate: "2011-12-06", salary: "$145,600", nationality: "American" },
+            { name: "Hermione Butler", position: "Regional Director", office: "London", age: 47, startDate: "2011-03-21", salary: "$356,250", nationality: "British" },
+            { name: "Lael Greer", position: "Systems Administrator", office: "London", age: 21, startDate: "2009-02-27", salary: "$103,500", nationality: "British" },
+            { name: "Jonas Alexander", position: "Developer", office: "San Francisco", age: 30, startDate: "2010-07-14", salary: "$86,500", nationality: "Swedish" },
+            { name: "Shad Decker", position: "Regional Director", office: "Edinburgh", age: 51, startDate: "2008-11-13", salary: "$183,000", nationality: "Canadian" },
+            { name: "Michael Bruce", position: "Javascript Developer", office: "Singapore", age: 29, startDate: "2011-06-27", salary: "$183,000", nationality: "Australian" },
+            { name: "Donna Snider", position: "Customer Support", office: "New York", age: 27, startDate: "2011-01-25", salary: "$112,000", nationality: "American" }
+        ];
         
-        // Function to initialize DataTable
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-circle'
+            };
+            
+            const toast = $(`
+                <div class="custom-toast toast-${type}">
+                    <i class="fas ${icons[type]} toast-icon"></i>
+                    <span class="toast-message">${message}</span>
+                </div>
+            `);
+            
+            $('#toastContainer').append(toast);
+            
+            setTimeout(() => {
+                toast.css('animation', 'slideIn 0.3s ease reverse');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // Update selected count
+        function updateSelectedCount(table, countId) {
+            const count = table.rows({ selected: true }).count();
+            $(`#${countId} span`).text(count);
+        }
+        
+        // Initialize DataTable
         function initializeTable(tableId, tableNum) {
             const table = $(`#${tableId}`).DataTable({
-                ajax: {
-                    url: ajaxUrl,
-                    dataSrc: function(json) {
-                        // Transform the data to include nationality and match our 7 columns
-                        const nationalities = ['Filipino', 'American', 'British', 'German', 'French', 'Japanese', 'Korean', 'Australian', 'Canadian', 'Indian'];
-                        return json.map((user, index) => ({
-                            id: user.id,
-                            name: user.name,
-                            email: user.email,
-                            position: user.company ? user.company.name : 'N/A',
-                            office: user.address ? `${user.address.city}, ${user.address.street}` : 'N/A',
-                            age: Math.floor(Math.random() * 30) + 25, // Random age 25-55
-                            nationality: nationalities[index % nationalities.length]
-                        }));
-                    }
-                },
+                data: sampleData,
                 columns: [
-                    { data: 'id' },
                     { data: 'name' },
-                    { data: 'email' },
                     { data: 'position' },
                     { data: 'office' },
                     { data: 'age' },
+                    { data: 'startDate' },
+                    { data: 'salary' },
                     { data: 'nationality' }
                 ],
                 select: {
                     style: 'multi',
-                    selector: 'td:first-child'
+                    selector: 'td'
                 },
-                columnDefs: [
-                    {
-                        targets: 0,
-                        orderable: false,
-                        searchable: false,
-                        render: function(data, type, row) {
-                            return '<input type="checkbox" class="row-select" value="' + data + '"> ' + data;
-                        }
-                    }
-                ],
-                order: [[1, 'asc']],
+                order: [[0, 'asc']],
                 pageLength: 10,
-                dom: '<"row"<"col-sm-12"p>>rt<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"i>>',
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                dom: '<"row"<"col-12 d-flex justify-content-center"p>>rt<"row mt-3"<"col-md-6"l><"col-md-6"i>>',
                 language: {
-                    search: "", // Remove search label
-                    searchPlaceholder: "",
-                    lengthMenu: "Show _MENU_ entries",
+                    lengthMenu: "_MENU_ entries per page",
                     info: "Showing _START_ to _END_ of _TOTAL_ entries",
-                    infoEmpty: "Showing 0 to 0 of 0 entries",
-                    infoFiltered: "(filtered from _MAX_ total entries)"
+                    infoEmpty: "No entries available",
+                    infoFiltered: "(filtered from _MAX_ total)",
+                    paginate: {
+                        first: '<i class="fas fa-angle-double-left"></i>',
+                        last: '<i class="fas fa-angle-double-right"></i>',
+                        next: '<i class="fas fa-angle-right"></i>',
+                        previous: '<i class="fas fa-angle-left"></i>'
+                    }
                 },
                 initComplete: function() {
-                    // Hide default search field
-                    $(this.api().table().container()).find('.dataTables_filter').hide();
-                    
-                    // Move pagination to top middle
-                    const pagination = $(this.api().table().container()).find('.dataTables_paginate');
-                    const wrapper = $(this.api().table().container()).closest('.table-container');
-                    pagination.css({
-                        'position': 'absolute',
-                        'top': '-50px',
-                        'left': '50%',
-                        'transform': 'translateX(-50%)',
-                        'z-index': '10'
-                    });
-                    
-                    // Move length to bottom left
-                    const length = $(this.api().table().container()).find('.dataTables_length');
-                    length.css({
-                        'position': 'absolute',
-                        'bottom': '-60px',
-                        'left': '0'
-                    });
-                    
-                    // Move info below length
-                    const info = $(this.api().table().container()).find('.dataTables_info');
-                    info.css({
-                        'position': 'absolute',
-                        'bottom': '-60px',
-                        'left': '200px'
-                    });
+                    $(`#loading${tableNum}`).fadeOut();
                 }
             });
             
-            // Individual column searching
-            $(`#search-id-${tableNum}`).on('keyup', function() {
-                table.column(0).search(this.value).draw();
+            // Update selected count on select/deselect
+            table.on('select deselect', function() {
+                updateSelectedCount(table, `selectedCount${tableNum}`);
             });
             
-            $(`#search-name-${tableNum}`).on('keyup', function() {
-                table.column(1).search(this.value).draw();
-            });
-            
-            $(`#search-email-${tableNum}`).on('keyup', function() {
-                table.column(2).search(this.value).draw();
-            });
-            
-            $(`#search-position-${tableNum}`).on('keyup', function() {
-                table.column(3).search(this.value).draw();
-            });
-            
-            $(`#search-office-${tableNum}`).on('keyup', function() {
-                table.column(4).search(this.value).draw();
-            });
-            
-            $(`#search-age-${tableNum}`).on('keyup', function() {
-                table.column(5).search(this.value).draw();
-            });
-            
-            $(`#search-nationality-${tableNum}`).on('keyup', function() {
-                table.column(6).search(this.value).draw();
+            // Column search
+            $(`#searchInputs${tableNum} input`).on('keyup change', function() {
+                const column = $(this).data('column');
+                table.column(column).search(this.value).draw();
             });
             
             // Column visibility toggle
-            $(`.tab-pane#table${tableNum} .toggle-col`).on('change', function() {
+            $(`#columnToggles${tableNum} .column-toggle-btn`).on('click', function() {
                 const column = table.column($(this).data('column'));
-                column.visible(!column.visible());
+                const isVisible = column.visible();
+                column.visible(!isVisible);
+                $(this).toggleClass('active', !isVisible);
             });
             
-            // Reapply custom layout on redraw
-            table.on('draw', function() {
-                const container = $(this.api().table().container());
+            // Select All
+            $(`#selectAll${tableNum}`).on('click', function() {
+                table.rows({ search: 'applied' }).select();
+                showToast(`Selected ${table.rows({ selected: true }).count()} rows`, 'success');
+            });
+            
+            // Clear Selection
+            $(`#clearSelection${tableNum}`).on('click', function() {
+                table.rows().deselect();
+                showToast('Selection cleared', 'warning');
+            });
+            
+            // Delete Selected
+            $(`#deleteSelected${tableNum}`).on('click', function() {
+                const selectedCount = table.rows({ selected: true }).count();
+                if (selectedCount === 0) {
+                    showToast('Please select rows to delete', 'warning');
+                    return;
+                }
                 
-                // Move pagination to top middle
-                const pagination = container.find('.dataTables_paginate');
-                pagination.css({
-                    'position': 'absolute',
-                    'top': '-50px',
-                    'left': '50%',
-                    'transform': 'translateX(-50%)',
-                    'z-index': '10'
-                });
-                
-                // Move length to bottom left
-                const length = container.find('.dataTables_length');
-                length.css({
-                    'position': 'absolute',
-                    'bottom': '-60px',
-                    'left': '0'
-                });
-                
-                // Move info below length
-                const info = container.find('.dataTables_info');
-                info.css({
-                    'position': 'absolute',
-                    'bottom': '-60px',
-                    'left': '200px'
-                });
-                
-                // Ensure search is hidden
-                container.find('.dataTables_filter').hide();
+                if (confirm(`Are you sure you want to delete ${selectedCount} row(s)?`)) {
+                    table.rows({ selected: true }).remove().draw();
+                    showToast(`Deleted ${selectedCount} row(s)`, 'success');
+                    updateSelectedCount(table, `selectedCount${tableNum}`);
+                }
             });
             
             return table;
@@ -473,93 +940,19 @@
         // Initialize tables
         let table1, table2;
         
-        // Initialize first table immediately
-        table1 = initializeTable('dataTable1', 1);
-        
-        // Initialize second table when tab is shown
-        let table2Initialized = false;
-        $('#table2-tab').on('shown.bs.tab', function() {
-            if (!table2Initialized) {
-                table2 = initializeTable('dataTable2', 2);
-                table2Initialized = true;
-                
-                // Set up checkbox updates for table2
-                table2.on('draw', function() {
-                    updateCheckboxes(table2);
-                });
-            }
-        });
-        
-        // Delete selected rows
-        $('#deleteSelected1').on('click', function() {
-            const selected = table1.rows({ selected: true }).count();
-            if (selected > 0) {
-                if (confirm(`Are you sure you want to delete ${selected} selected row(s)?`)) {
-                    table1.rows({ selected: true }).remove().draw();
-                    alert(`${selected} row(s) deleted successfully!`);
+        $(document).ready(function() {
+            // Initialize first table
+            table1 = initializeTable('dataTable1', 1);
+            
+            // Initialize second table when tab is shown
+            let table2Initialized = false;
+            $('#table2-tab').on('shown.bs.tab', function() {
+                if (!table2Initialized) {
+                    table2 = initializeTable('dataTable2', 2);
+                    table2Initialized = true;
                 }
-            } else {
-                alert('Please select at least one row to delete.');
-            }
-        });
-        
-        $('#deleteSelected2').on('click', function() {
-            if (!table2) return;
-            const selected = table2.rows({ selected: true }).count();
-            if (selected > 0) {
-                if (confirm(`Are you sure you want to delete ${selected} selected row(s)?`)) {
-                    table2.rows({ selected: true }).remove().draw();
-                    alert(`${selected} row(s) deleted successfully!`);
-                }
-            } else {
-                alert('Please select at least one row to delete.');
-            }
-        });
-        
-        // Row selection via checkbox
-        $(document).on('change', '.row-select', function(e) {
-            e.stopPropagation();
-            const table = $(this).closest('table').DataTable();
-            const row = table.row($(this).closest('tr'));
-            if ($(this).is(':checked')) {
-                row.select();
-            } else {
-                row.deselect();
-            }
-        });
-        
-        // Select row on click anywhere in the row
-        $(document).on('click', '#dataTable1 tbody tr, #dataTable2 tbody tr', function(e) {
-            if ($(e.target).is('input[type="checkbox"]')) return;
-            const table = $(this).closest('table').DataTable();
-            const row = table.row(this);
-            const checkbox = $(this).find('.row-select');
-            if (row.node()) {
-                if (row.selected()) {
-                    row.deselect();
-                    checkbox.prop('checked', false);
-                } else {
-                    row.select();
-                    checkbox.prop('checked', true);
-                }
-            }
-        });
-        
-        // Update checkbox state when rows are selected/deselected programmatically
-        function updateCheckboxes(table) {
-            table.rows({ selected: true }).every(function() {
-                $(this.node()).find('.row-select').prop('checked', true);
             });
-            table.rows({ selected: false }).every(function() {
-                $(this.node()).find('.row-select').prop('checked', false);
-            });
-        }
-        
-        // Update checkboxes on draw
-        table1.on('draw', function() {
-            updateCheckboxes(table1);
         });
     </script>
 </body>
 </html>
-
