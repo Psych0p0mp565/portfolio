@@ -1,0 +1,40 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-db" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c9cff" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#0b1220" />
+    </linearGradient>
+    <radialGradient id="glow-db" cx="25%" cy="20%" r="85%">
+      <stop offset="0%" stop-color="rgba(191,219,254,0.30)" />
+      <stop offset="65%" stop-color="rgba(59,130,246,0.06)" />
+      <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+    </radialGradient>
+    <pattern id="grid-db" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="rgba(0,0,0,0.30)" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="250" rx="24" fill="url(#bg-db)" />
+  <rect width="400" height="250" rx="24" fill="url(#glow-db)" />
+  <rect width="400" height="250" rx="24" fill="url(#grid-db)" opacity="0.9" />
+
+  <!-- Title pill -->
+  <g filter="url(#shadow)">
+    <rect x="32" y="26" width="336" height="42" rx="999" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" />
+  </g>
+  <text x="200" y="54" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="18" font-weight="700" fill="rgba(255,255,255,0.92)" letter-spacing="0.2">
+    Database Platform
+  </text>
+
+  <!-- Icon -->
+  <g fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)">
+    <ellipse cx="200" cy="92" rx="112" ry="30" />
+    <path d="M88 92 V182 C88 198 126 210 200 210 C274 210 312 198 312 182 V92" />
+    <path d="M88 138 C88 154 126 166 200 166 C274 166 312 154 312 138" />
+    <path d="M88 182 C88 198 126 210 200 210 C274 210 312 198 312 182" />
+  </g>
+</svg>

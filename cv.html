@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Janrafael F. Morga — CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg0: #080a0c;
+        --bg1: #0d1218;
+        --surface: rgba(255, 255, 255, 0.045);
+        --surface2: rgba(255, 255, 255, 0.07);
+        --border: rgba(255, 255, 255, 0.09);
+        --text: #f4f6f8;
+        --muted: rgba(244, 246, 248, 0.62);
+        --faint: rgba(244, 246, 248, 0.42);
+        --accent: #5ee9b5;
+        --accent-dim: rgba(94, 233, 181, 0.22);
+        --accent2: #7c9cff;
+        --radius: 20px;
+        --radius-sm: 12px;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+        --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+        --font-display: "Outfit", var(--font-body);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font-body);
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--text);
+        background-color: var(--bg0);
+        background-image:
+          radial-gradient(ellipse 900px 520px at 12% -8%, rgba(94, 233, 181, 0.16), transparent 50%),
+          radial-gradient(ellipse 700px 480px at 92% 8%, rgba(124, 156, 255, 0.12), transparent 50%),
+          linear-gradient(165deg, var(--bg0) 0%, var(--bg1) 45%, #0a0e14 100%);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.15s ease, opacity 0.15s ease;
+      }
+
+      a:hover {
+        color: #8ff5d0;
+      }
+
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: clamp(32px, 6vw, 64px) clamp(18px, 4vw, 28px) 80px;
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        padding: clamp(28px, 4vw, 40px) clamp(24px, 4vw, 36px);
+        border-radius: calc(var(--radius) + 4px);
+        background: linear-gradient(145deg, var(--surface2) 0%, var(--surface) 100%);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(600px 280px at 100% 0%, var(--accent-dim), transparent 55%);
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        position: relative;
+        display: grid;
+        gap: 20px;
+      }
+
+      @media (min-width: 640px) {
+        .hero-inner {
+          grid-template-columns: 1fr auto;
+          align-items: start;
+          gap: 28px;
+        }
+      }
+
+      .name {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin: 0 0 8px;
+        background: linear-gradient(105deg, #fff 0%, #c8f5e4 45%, #a8c4ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .role-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(94, 233, 181, 0.1);
+        border: 1px solid rgba(94, 233, 181, 0.28);
+      }
+
+      .role-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent);
+      }
+
+      .headline {
+        margin: 12px 0 0;
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: -0.01em;
+        max-width: 42ch;
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      @media (min-width: 640px) {
+        .contact {
+          align-items: flex-end;
+          text-align: right;
+        }
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+      }
+
+      .chip strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .chip a {
+        color: var(--text);
+      }
+
+      .chip a:hover {
+        color: var(--accent);
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+        justify-content: flex-end;
+      }
+
+      .link-pill {
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bg0);
+        background: linear-gradient(135deg, var(--accent) 0%, #4ad4a8 100%);
+        border: none;
+        box-shadow: 0 4px 24px rgba(94, 233, 181, 0.25);
+      }
+
+      .link-pill:hover {
+        color: var(--bg0);
+        filter: brightness(1.06);
+      }
+
+      .link-pill--ghost {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border);
+        box-shadow: none;
+      }
+
+      .link-pill--ghost:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--accent);
+      }
+
+      /* Layout */
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.85fr;
+        gap: 22px;
+        margin-top: 24px;
+        align-items: start;
+      }
+
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .panel {
+        border-radius: var(--radius);
+        padding: 26px 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+      }
+
+      .panel--sticky {
+        position: sticky;
+        top: 20px;
+      }
+
+      @media (max-width: 860px) {
+        .panel--sticky {
+          position: static;
+        }
+      }
+
+      .section {
+        margin-top: 28px;
+      }
+
+      .section:first-child {
+        margin-top: 0;
+      }
+
+      h2.section-title {
+        margin: 0 0 14px;
+        font-family: var(--font-display);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--faint);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      h2.section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--border), transparent);
+        min-width: 40px;
+      }
+
+      h3 {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 0 0 4px;
+        color: var(--text);
+      }
+
+      .sub {
+        margin: 0 0 12px;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      p {
+        margin: 0 0 12px;
+        color: rgba(244, 246, 248, 0.88);
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        position: relative;
+        margin: 0 0 10px;
+        padding-left: 18px;
+        color: rgba(244, 246, 248, 0.88);
+        line-height: 1.5;
+      }
+
+      .list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        opacity: 0.9;
+      }
+
+      .list li:last-child {
+        margin-bottom: 0;
+      }
+
+      .project-block {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .project-block:first-of-type {
+        padding-top: 0;
+      }
+
+      .project-block:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .kv {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+      }
+
+      .tag {
+        padding: 6px 11px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .cert-list,
+      .achieve-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .cert-list li,
+      .achieve-list li {
+        position: relative;
+        padding: 10px 0 10px 20px;
+        border-left: 2px solid var(--border);
+        margin-left: 6px;
+        font-size: 14px;
+        color: rgba(244, 246, 248, 0.86);
+      }
+
+      .cert-list li::before,
+      .achieve-list li::before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 14px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--bg0);
+        border: 2px solid var(--accent);
+      }
+
+      .cert-list li:last-child,
+      .achieve-list li:last-child {
+        border-left-color: transparent;
+      }
+
+      .foot {
+        margin-top: 22px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+        font-size: 12px;
+        color: var(--faint);
+      }
+
+      @media print {
+        body {
+          background: #fff;
+          color: #111;
+          font-size: 11pt;
+        }
+
+        .hero {
+          box-shadow: none;
+          border: 1px solid #e5e5e5;
+          background: #fafafa;
+        }
+
+        .name {
+          background: none;
+          -webkit-background-clip: unset;
+          background-clip: unset;
+          color: #111;
+        }
+
+        .role-badge {
+          color: #0d6b4a;
+          border-color: #b8e5d4;
+          background: #ecfdf5;
+        }
+
+        .role-badge::before {
+          box-shadow: none;
+        }
+
+        .headline,
+        .sub,
+        .chip,
+        .foot {
+          color: #444;
+        }
+
+        .chip {
+          border-color: #e5e5e5;
+          background: #fff;
+        }
+
+        .chip a {
+          color: #111;
+        }
+
+        .link-pill,
+        .link-pill--ghost {
+          background: #111 !important;
+          color: #fff !important;
+          border: none !important;
+          box-shadow: none !important;
+        }
+
+        a {
+          color: #0a6b4d;
+        }
+
+        .panel {
+          border-color: #e5e5e5;
+          background: #fff;
+        }
+
+        h2.section-title {
+          color: #666;
+        }
+
+        h2.section-title::after {
+          background: #e5e5e5;
+        }
+
+        h3 {
+          color: #111;
+        }
+
+        p,
+        .list li,
+        .cert-list li,
+        .achieve-list li {
+          color: #222;
+        }
+
+        .tag {
+          border-color: #eee;
+          background: #f7f7f7;
+          color: #444;
+        }
+
+        .project-block {
+          border-color: #eee;
+        }
+
+        .wrap {
+          padding: 0;
+          max-width: 100%;
+        }
+
+        .grid {
+          gap: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <div class="hero-inner">
+          <div>
+            <span class="role-badge">CV · 2026</span>
+            <h1 class="name">Janrafael F. Morga</h1>
+            <p class="headline">Database Management Major · BSIT (Database Management)</p>
+          </div>
+          <div class="contact">
+            <div class="contact-row">
+              <span class="chip"><strong>Location</strong> Polomolok, South Cotabato</span>
+            </div>
+            <div class="contact-row">
+              <span class="chip"><a href="mailto:morgajanrafael1793@gmail.com">morgajanrafael1793@gmail.com</a></span>
+              <span class="chip"><strong>+63</strong> 947 773 7717</span>
+            </div>
+            <div class="links">
+              <a class="link-pill" href="https://linkedin.com/in/janrafael-morga" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="link-pill link-pill--ghost" href="https://github.com/Psych0p0mp565" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="link-pill link-pill--ghost" href="portfolio-main/index.html" target="_blank" rel="noreferrer">Portfolio</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="grid">
+        <main class="panel">
+          <section class="section">
+            <h2 class="section-title">Profile</h2>
+            <p>
+              Information Technology (Database Management) student focused on database management, full-stack development,
+              and applied AI solutions. Experienced with Python, JavaScript, SQL, Django, HTML/CSS, and relational/NoSQL
+              databases to design and optimize systems that improve data accuracy and automate workflows.
+            </p>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Experience</h2>
+            <h3>Polomolok Water District — MIS</h3>
+            <p class="sub">On-the-Job Training · Onsite, Polomolok · 486 hours · Software Developer &amp; IT Support</p>
+            <ul class="list">
+              <li>
+                Built a <strong>live customer satisfaction survey system</strong> (Node.js/Express, MongoDB Atlas, Render);
+                fixed duplicate submissions, validation issues, and CORS blocking.
+              </li>
+              <li>
+                Implemented secure <strong>admin API endpoints</strong> with <strong>API key authentication</strong>; documented the
+                system and handed off the codebase.
+              </li>
+              <li>
+                Built and deployed a responsive <strong>PolWD website</strong> using <strong>XAMPP + WordPress</strong>; fixed
+                navigation overlaps and improved public-facing layout.
+              </li>
+              <li>
+                Contributed to <strong>DropeePay kiosk</strong>: voice guide, interface finalization, and customer assistance
+                during peak periods.
+              </li>
+              <li>
+                Hands-on infrastructure support: RJ45 crimping, cable routing, server/UPS setup, OS installs, and CCTV
+                deployment (including infrared models).
+              </li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-block">
+              <h3>AI Mealybug Detection</h3>
+              <p class="sub">YOLO · Roboflow · Mobile (offline)</p>
+              <ul class="list">
+                <li>AI image recognition for agricultural pest detection with offline-first mobile usage.</li>
+                <li>Fixed a scanning issue returning <strong>0%</strong>; refined UI and detection flow.</li>
+                <li>Expanded dataset by <strong>5,000+ images</strong> and integrated <strong>Firebase</strong> for storage/sync.</li>
+                <li>Location: geofencing, live GPS, and geo-mapping.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h3>Customer Satisfaction Survey System</h3>
+              <p class="sub">Node.js · Express · MongoDB Atlas · Render</p>
+              <ul class="list">
+                <li>Live survey collection with admin retrieval endpoints for reporting.</li>
+                <li>Improved reliability through deduplication, validation hardening, and CORS fixes.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h3>PolWD Website</h3>
+              <p class="sub">WordPress · XAMPP</p>
+              <ul class="list">
+                <li>Responsive public website; fixed navigation overlap and improved layout.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h3>DropeePay Kiosk Support</h3>
+              <p class="sub">UI flow · Voice guide · Onsite assistance</p>
+              <ul class="list">
+                <li>Finalized kiosk interface flow and helped guide users during peak payment periods.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h3>Habal-Habal Ride Sharing</h3>
+              <p class="sub">MERN Stack</p>
+              <ul class="list">
+                <li>Ride-sharing platform with GPS routing and real-time trip management.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h3>Enterprise Database System</h3>
+              <p class="sub">PostgreSQL</p>
+              <ul class="list">
+                <li>Multi-user system with optimized queries and secure access.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h3>Portfolio Website</h3>
+              <p class="sub">Front-end &amp; back-end showcase</p>
+              <ul class="list">
+                <li>Personal site presenting projects and technical breadth.</li>
+              </ul>
+            </div>
+          </section>
+        </main>
+
+        <aside class="panel panel--sticky">
+          <section class="section">
+            <h2 class="section-title">Education</h2>
+            <h3>MSU – General Santos</h3>
+            <p class="sub">BS Information Technology (Database Management) · 2022 – Present · Expected 2026</p>
+            <h3>Polomolok National High School</h3>
+            <p class="sub">HUMSS · 2016 – 2022</p>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="kv">
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">SQL</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">MongoDB Atlas</span>
+              <span class="tag">Django</span>
+              <span class="tag">React Native</span>
+              <span class="tag">Expo</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Render</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">XAMPP</span>
+              <span class="tag">Roboflow</span>
+              <span class="tag">Git</span>
+              <span class="tag">YOLO / CV</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">CORS</span>
+              <span class="tag">Networking</span>
+              <span class="tag">CCTV</span>
+              <span class="tag">Google Cloud</span>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Certifications</h2>
+            <ul class="cert-list">
+              <li>Implement CI/CD Pipelines on Google Cloud — Google Cloud (Aug 2025)</li>
+              <li>Gemini for End-to-End SDLC — Google Cloud (Aug 2025)</li>
+              <li>Digital Transformation with Google Cloud — Google Cloud (May 2025)</li>
+              <li>Introduction to IoT — Cisco Networking Academy (May 2025)</li>
+              <li>LFC108: Cybersecurity Essentials — Linux Foundation (May 2025)</li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Achievements</h2>
+            <ul class="achieve-list">
+              <li>1st Runner-Up — AI Bayanihan Challenge (2025)</li>
+              <li>Top 10 — Philippine Startup Challenge (2025)</li>
+              <li>GTA Lab Mobile Beta Testing — Completion (Aug 2024)</li>
+              <li>Global Youth Summit — Appreciation (Jul 2024)</li>
+            </ul>
+          </section>
+
+          <p class="foot">Print with <kbd>Ctrl</kbd>+<kbd>P</kbd> → Save as PDF.</p>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>

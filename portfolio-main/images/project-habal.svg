@@ -1,0 +1,40 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-habal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="55%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+    <radialGradient id="glow-habal" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="rgba(167,243,208,0.35)" />
+      <stop offset="55%" stop-color="rgba(16,185,129,0.05)" />
+      <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+    </radialGradient>
+    <pattern id="grid-habal" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="rgba(0,0,0,0.28)" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="250" rx="24" fill="url(#bg-habal)" />
+  <rect width="400" height="250" rx="24" fill="url(#glow-habal)" />
+  <rect width="400" height="250" rx="24" fill="url(#grid-habal)" opacity="0.9" />
+
+  <!-- Title pill -->
+  <g filter="url(#shadow)">
+    <rect x="32" y="26" width="336" height="42" rx="999" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.18)" />
+  </g>
+  <text x="200" y="54" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="18" font-weight="700" fill="rgba(255,255,255,0.92)" letter-spacing="0.2">
+    Ride Sharing Platform
+  </text>
+
+  <!-- Icon -->
+  <g fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)">
+    <path d="M92 154 L150 124 H206 L246 146 L318 146" />
+    <circle cx="150" cy="174" r="28" />
+    <circle cx="278" cy="174" r="28" />
+    <path d="M206 110 L244 86 L292 100" />
+  </g>
+</svg>
